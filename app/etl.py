@@ -28,7 +28,10 @@ while True:
             "age": fake.random_int(min=18, max=99),
             "phone": fake.phone_number()
         }
+        # Create the users table if it doesn't exist
         cur.execute("CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(100), address VARCHAR(255), email VARCHAR(100), age INT, phone VARCHAR(255))")
+
+        # Insert the generated data into the users table
         cur.execute(
             """
             INSERT INTO users (name, address, email, age, phone)
